@@ -80,7 +80,7 @@
 	<h2>Отзывы и предложения</h2>
 	<form id="form">
 		<input type="text" placeholder="Имя" id="user_name" required>
-		<textarea name="feedback-text" placeholder="Ваш отзыв..." rows=10 required></textarea>
+		<textarea id="feedback-text" placeholder="Ваш отзыв..." rows=10 required></textarea>
 		<button id="submit">Сообщить</button>
 	</form>
 	<script src="https://telegram.org/js/telegram-web-app.js"></script>
@@ -95,6 +95,14 @@
 		});
 
 		submit.addEventListener('click', () => {
+			let name = document.getElementById("user_name").value;
+			let review = document.getElementById("feedback-text").value;
+
+			let data = {
+				name: name,
+				review: review
+			};
+			tg.sendData(JSON.stringify(data));
 			tg.close();
 		});
 
