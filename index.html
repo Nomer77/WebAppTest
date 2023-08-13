@@ -62,7 +62,7 @@
 	}
 
 	input:focus {
-		border-color: #db5d5d;
+		border-color: rgb(59, 59, 59);
 	}
 
 	textarea {
@@ -79,10 +79,16 @@
 <body>
 	<h2>Отзывы и предложения</h2>
 	<form id="form">
-		<input type="text" placeholder="Имя" id="user_name">
-		<textarea name="feedback-text" placeholder="Ваш отзыв..." rows=10></textarea>
-		<button id="review">Сообщить</button>
+		<input type="text" placeholder="Имя" id="user_name" required>
+		<textarea name="feedback-text" placeholder="Ваш отзыв..." rows=10 required></textarea>
+		<button id="submit">Сообщить</button>
 	</form>
 	<script src="https://telegram.org/js/telegram-web-app.js"></script>
+	<script>
+		let tg = window.Telegram.WebApp;
+		let submit = document.getElementById("submit")
+
+		document.getElementById("user_name").value = tg.InitDataUnsafe.first_name
+	</script>
 </body>
 </html>
