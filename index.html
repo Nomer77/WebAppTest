@@ -89,7 +89,7 @@
 		let submit = document.getElementById("submit");
 
 		window.addEventListener('load', () => {
-			document.getElementById("user_name").value = tg.initData.first_name + " LOL";
+			document.getElementById("user_name").value = tg.initDataUnsafe.user.first_name + " " + tg.initDataUnsafe.user.last_name;
 		});
 		
 	</script>
