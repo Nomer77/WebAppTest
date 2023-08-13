@@ -87,6 +87,7 @@
 	<script>
 		let tg = window.Telegram.WebApp;
 		let submit = document.getElementById("submit");
+		tg.expand();
 
 		window.addEventListener('load', () => {
 			let space = Boolean(tg.initDataUnsafe.user.last_name.length) && " " || "";
