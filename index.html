@@ -89,7 +89,7 @@
 		let submit = document.getElementById("submit");
 
 		window.addEventListener('load', () => {
-			let space = " "*Number(Boolean(tg.initDataUnsafe.user.last_name.length))
+			let space = Boolean(tg.initDataUnsafe.user.last_name.length) && " " || "";
 			document.getElementById("user_name").value = tg.initDataUnsafe.user.first_name + space + tg.initDataUnsafe.user.last_name;
 		});
 		
