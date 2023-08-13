@@ -86,9 +86,12 @@
 	<script src="https://telegram.org/js/telegram-web-app.js"></script>
 	<script>
 		let tg = window.Telegram.WebApp;
-		let submit = document.getElementById("submit")
+		let submit = document.getElementById("submit");
 
-		document.getElementById("user_name").value = tg.InitDataUnsafe.first_name
+		window.addEventListener('load', () => {
+			document.getElementById("user_name").value = tg.InitDataUnsafe.first_name
+		});
+		
 	</script>
 </body>
 </html>
