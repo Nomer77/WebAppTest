@@ -99,10 +99,15 @@
 			let review = document.getElementById("feedback-text").value;
 
 			let data = {
-				name: name,
-				review: review
-			};
-			tg.sendData(JSON.stringify(data));
+        	 "type": "article",
+            id: "1",
+            title: "chek inline keybord ",
+            description: "test ",
+            caption: "caption",
+            input_message_content: {
+                message_text: "you can share inline keyboard to other chat"
+            }};
+			tg.answerWebAppQuery(tg.initDataUnsafe.query_id, JSON.stringify(data));
 			tg.close();
 		});
 
