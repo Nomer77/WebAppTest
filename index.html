@@ -75,39 +75,46 @@
 		border-radius: 5px;
 	}
 	</style>
+
+
 </head>
 <body>
 	<h2>Отзывы и предложения</h2>
 	<form id="form">
-		<input type="text" placeholder="Имя" id="user_name" required>
-		<textarea id="feedback-text" placeholder="Ваш отзыв..." rows=10 required></textarea>
-		<button id="submit">Сообщить</button>
+		<input type="text" placeholder="Имя" id="user_firstname" required>
+		<input type="text" placeholder="Фамилия" id="user_surname" required>
+		<input type="text" placeholder="Отчество" id="user_dadname">
+		<input type="email" placeholder="Почта" id="user_email" required>
+		<input type="tel" placeholder="Телефон" inputmode="numeric" id="user_phone" required>
+		<button id="submit">Отправить</button>
 	</form>
+
+
+
+
 	<script src="https://telegram.org/js/telegram-web-app.js"></script>
 	<script>
 		let tg = window.Telegram.WebApp;
 		let submit = document.getElementById("submit");
 		tg.expand();
 
-		window.addEventListener('load', () => {
-			let space = Boolean(tg.initDataUnsafe.user.last_name.length) && " " || "";
-			document.getElementById("user_name").value = tg.initDataUnsafe.user.first_name + space + tg.initDataUnsafe.user.last_name;
-		});
-
 		submit.addEventListener('click', () => {
-			let name = document.getElementById("user_name").value;
-			let review = document.getElementById("feedback-text").value;
+			let user_firstname = document.getElementById("user_firstname").value;
+			let user_surname = document.getElementById("user_surname").value;
+			let user_dadname = document.getElementById("user_dadname").value;
+			let user_email = document.getElementById("user_email").value;
+			let user_phone = document.getElementById("user_phone").value;
 
 			let data = {
-        	 "type": "article",
-            id: "1",
-            title: "chek inline keybord ",
-            description: "test ",
-            caption: "caption",
-            input_message_content: {
-                message_text: "you can share inline keyboard to other chat"
-            }};
-			tg.answerWebAppQuery(tg.initDataUnsafe.query_id, JSON.stringify(data));
+				firstname: user_firstname,
+				surname: user_surname,
+				dadname: user_dadname,
+				email: user_email,
+				phone: user_phone
+			}
+
+			tg.sendData(JSON.stringify(data));
+
 			tg.close();
 		});
 
