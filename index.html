@@ -79,13 +79,13 @@
 
 </head>
 <body>
-	<h2>Отзывы и предложения</h2>
+	<h2>Регестрация</h2>
 	<form id="form">
 		<input type="text" placeholder="Имя" id="user_firstname" required>
 		<input type="text" placeholder="Фамилия" id="user_surname" required>
 		<input type="text" placeholder="Отчество" id="user_dadname">
 		<input type="email" placeholder="Почта" id="user_email" required>
-		<input type="tel" placeholder="Телефон" inputmode="numeric" pattern="[8]{1} [0-9]{3}-[0-9]{3}-[0-9]{4}" id="user_phone" required>
+		<input type="tel" placeholder="Телефон" inputmode="numeric" id="user_phone" required>
 		<div id="error"></div>
 		<button id="submit">Отправить</button>
 	</form>
@@ -98,12 +98,6 @@
 		let tg = window.Telegram.WebApp;
 		let submit = document.getElementById("submit");
 		tg.expand();
-
-		const EMAIL_REGEXP = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
-
-		function isEmailValid(value) {
-			return EMAIL_REGEXP.test(value);
-		}
 
 		submit.addEventListener('click', () => {
 			let user_firstname = document.getElementById("user_firstname").value;
@@ -119,11 +113,6 @@
 
 			if (user_surname.length < 2) {
 				document.getElementById("error").innerText = "Ошибка в фамилии";
-				return;
-			}
-
-			if (!isEmailValid(user_email.length)) {
-				document.getElementById("error").innerText = "Ошибка в почте";
 				return;
 			}
 
